@@ -1,9 +1,19 @@
-import React from "react";
+import React , { useState}from "react";
 import "../index.scss";
 import axios from "axios"
-const AllRecepies = ({data}) => {
+const AllRecepies = ({data , setUpdate , ff}) => {
 console.log(data);
-
+const [newname, setName] = useState("");
+  const [newcooktime, setCooktime] = useState("");
+  const [newpreptime, setPreptime] = useState("");
+  const [newserves, setServes] = useState("");
+  const [newcategory, setCategory] = useState("");
+  const [newdescription, setDescription] = useState("");
+  const [newingredients, setIngredients] = useState("");
+  const [newimage, setImage] = useState("");
+  const [display, setDisplay] = useState(false)
+  
+ //sorry i know this looks messy but it works 
 const remove = (id) => {
   axios.delete(`http://localhost:4000/delete/${id}`)
     .then((res) => {
@@ -13,11 +23,26 @@ const remove = (id) => {
       console.log(error);
     });
 }
-// const update = () => {
-// axios.update(`http://localhost:4000/delete${}`)
-// .then()
-
-// }
+const update = (id) => {
+  const updatedRecipe = {
+    recepie_Name: newname,
+    Cook_Time: newcooktime,
+    Prep_Time: newpreptime,
+    Serves: newserves,
+    categorie: newcategory,
+    recepie_Description: newdescription,
+    recepie_Ingredients: newingredients,
+    recepie_Image: newimage,
+  };
+  axios
+    .put(`http://localhost:4000/update/${id}`, updatedRecipe)
+    .then((res) => {
+      setUpdate(!ff, id)
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+};
   return (
    
     <div className="card-container">
@@ -26,7 +51,7 @@ const remove = (id) => {
     {data.map((element)=> {  return (
       <div className="card">
      <button className="delete" onClick={() => remove(element.recepie_Id)}>delete</button>
-<button className="update">update </button>
+<button className="update"  onClick={() => update(element.recepie_Id)} >update </button>
       
         <> 
           <div className="header">
@@ -46,10 +71,48 @@ const remove = (id) => {
       </div>
     )
 })}
-      </div>
-  );
-};
       
+
+<div className="add-recipe-form ">
+      <div className="form-group">
+        <label>Name:</label>
+       
+      </div>
+      <div className="form-group">
+        <label>Cook Time:</label>
+        <input type="number" placeholder="Cooking Time" value={newcooktime}  onChange={(e) => {setCooktime(e.target.value)}} />
+      </div>
+      <div className="form-group">
+        <label>Prep Time:</label>
+        <input type="number" placeholder="Preparation Time" value={newpreptime}  onChange={(e) => {setPreptime(e.target.value)}} />
+      </div>
+      <div className="form-group">
+        <label>Serves:</label>
+        <input type="number" placeholder="serves" value={newserves}  onChange={(e) => {setServes(e.target.value)}}/>
+      </div>
+      <div className="form-group">
+        <label>Category:</label>
+        <input type="text" placeholder="Category" value={newcategory}  onChange={(e) => {setCategory(e.target.value)}} />
+      </div>
+      <div className="form-group">
+        <label>Description:</label>
+        <input type="text" placeholder="Description" value={newdescription}  onChange={(e) => {setDescription(e.target.value)}} />
+      </div>
+      <div className="form-group">
+        <label>Ingredients:</label>
+        <input placeholder="Ingredients" value={newingredients}  onChange={(e) => {setIngredients(e.target.value)}} />
+      </div>
+
+      <div className="form-group">
+        <label>Image:</label>
+        <input type="text" placeholder="Image URL" value={newimage}   onChange={(e) => {setImage(e.target.value)}}  />
+      </div>
+     
+    </div>
+
+</div>
+       );
+      };
       // <div className="card">
       //   <button className="delete">delete</button>
       //   <button className="update">update </button>

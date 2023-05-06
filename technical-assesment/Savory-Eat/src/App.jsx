@@ -61,7 +61,7 @@ API()
         <span className="nav-indicator"></span>
       </nav>
       {view === "Home" && <Home changeView={changeView}  />}
-      {view === "Allrecepies" && <AllRecepies   data = {data}   />}
+      {view === "Allrecepies" && <AllRecepies   data = {data} ff=  {update}  setUpdate = {setUpdate}  />}
       {view === "Addrecepie" && <Add  ff = {update}  setUpdate = {setUpdate} />}
       <div></div>
     </div>
