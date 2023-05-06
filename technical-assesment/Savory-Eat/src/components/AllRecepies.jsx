@@ -1,7 +1,25 @@
 import React from "react";
 import "../index.scss";
+import axios from "axios"
 const AllRecepies = ({data}) => {
-  console.log(data)
+console.log(data);
+
+const remove  = () =>  {
+axios.delete(`http://localhost:4000/delete${id.params}`)
+.then((res) => {
+  console.log("deleted");
+})
+.catch((error) => {
+  console.log(error);
+})
+}
+
+
+const update = () => {
+axios.update(`http://localhost:4000/delete${id.params}`)
+.then()
+
+}
   return (
    
     <div className="card-container">
@@ -9,7 +27,7 @@ const AllRecepies = ({data}) => {
     
     {data.map((element)=> {  return (
       <div className="card">
-        <button className="delete">delete</button>
+        <button className="delete" onClick={remove} >delete</button>
         <button className="update">update </button>
       
         <> 
