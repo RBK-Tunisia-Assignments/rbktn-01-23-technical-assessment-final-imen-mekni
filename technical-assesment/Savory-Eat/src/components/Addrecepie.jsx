@@ -1,8 +1,8 @@
 import React  , {useState}from "react";
 import "../App.css";
 import axios from "axios"
-const Add = ({setData , data}) => {
-console.log(data);
+const Add = ({update , setUpdate}) => {
+
 const [name , setName] = useState("")
 const [cooktime , setCooktime] = useState("")
 const [preptime , setPreptime] = useState("")
@@ -15,11 +15,18 @@ const [image , setImage] = useState("")
 
 const post = () => {
 const newrecepie = {
-  name : name , cooktime : cooktime , preptime : preptime , serves : serves , category : category , description : description , ingredients : ingredients , image : image
+  recepie_Name: name,
+      Cook_Time: cooktime,
+      Prep_Time: preptime,
+      Serves: serves,
+      categorie: category,
+      recepie_Description: description,
+      recepie_Ingredients: ingredients,
+      recepie_Image: image
 }
-axios.post("http://localhost:4000/add")
+axios.post("http://localhost:4000/add" , newrecepie)
 .then((res)=> {
-
+setUpdate(!update)
 })
 .catch((err) =>  {
   console.log(err)
@@ -36,7 +43,7 @@ axios.post("http://localhost:4000/add")
     <div className="add-recipe-form ">
       <div className="form-group">
         <label>Name:</label>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => {setName(e.target.value)}} />
+        <input type="text" placeholder="Name" value={name} onChange={(e) => {setName(console.log(e.target.value))}} />
       </div>
       <div className="form-group">
         <label>Cook Time:</label>

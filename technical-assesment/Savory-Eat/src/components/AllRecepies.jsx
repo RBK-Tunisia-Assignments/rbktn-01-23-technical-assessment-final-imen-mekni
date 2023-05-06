@@ -5,7 +5,7 @@ const AllRecepies = ({data}) => {
 console.log(data);
 
 const remove  = () =>  {
-axios.delete(`http://localhost:4000/delete${id.params}`)
+axios.delete(`http://localhost:4000/delete${id}}`)
 .then((res) => {
   console.log("deleted");
 })
@@ -16,7 +16,7 @@ axios.delete(`http://localhost:4000/delete${id.params}`)
 
 
 const update = () => {
-axios.update(`http://localhost:4000/delete${id.params}`)
+axios.update(`http://localhost:4000/delete${id}`)
 .then()
 
 }

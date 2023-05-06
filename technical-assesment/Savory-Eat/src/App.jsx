@@ -10,6 +10,7 @@ function App() {
 const [view,setView]=useState('Home')
 const [data , setData] = useState([])
 const [search , setSearch] = useState("")
+const [update , setUpdate] = useState(false)
 
 const API = () => {
 axios.get("http://localhost:4000/get")
@@ -61,7 +62,7 @@ API()
       </nav>
       {view === "Home" && <Home changeView={changeView}  />}
       {view === "Allrecepies" && <AllRecepies   data = {data}   />}
-      {view === "Addrecepie" && <Add  setData = {setData} data = {data} />}
+      {view === "Addrecepie" && <Add  ff = {update}  setUpdate = {setUpdate} />}
       <div></div>
     </div>
   );
