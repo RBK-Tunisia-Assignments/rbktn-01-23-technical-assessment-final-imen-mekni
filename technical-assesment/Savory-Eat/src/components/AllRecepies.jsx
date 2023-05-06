@@ -4,22 +4,20 @@ import axios from "axios"
 const AllRecepies = ({data}) => {
 console.log(data);
 
-const remove  = () =>  {
-axios.delete(`http://localhost:4000/delete${id}}`)
-.then((res) => {
-  console.log("deleted");
-})
-.catch((error) => {
-  console.log(error);
-})
+const remove = (id) => {
+  axios.delete(`http://localhost:4000/delete/${id}`)
+    .then((res) => {
+      console.log("deleted");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
+// const update = () => {
+// axios.update(`http://localhost:4000/delete${}`)
+// .then()
 
-
-const update = () => {
-axios.update(`http://localhost:4000/delete${id}`)
-.then()
-
-}
+// }
   return (
    
     <div className="card-container">
@@ -27,8 +25,8 @@ axios.update(`http://localhost:4000/delete${id}`)
     
     {data.map((element)=> {  return (
       <div className="card">
-        <button className="delete" onClick={remove} >delete</button>
-        <button className="update">update </button>
+     <button className="delete" onClick={() => remove(element.recepie_Id)}>delete</button>
+<button className="update">update </button>
       
         <> 
           <div className="header">
@@ -44,7 +42,7 @@ axios.update(`http://localhost:4000/delete${id}`)
             <i> Serves: 5 </i> {element.Serves}
           </div>
         </>
-       
+   
       </div>
     )
 })}
