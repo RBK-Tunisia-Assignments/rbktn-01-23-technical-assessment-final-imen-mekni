@@ -1,4 +1,6 @@
-const getrecepie = (req, res) => {};
+const getrecepie = (req, res) => {
+
+};
 
 module.exports = {
   getrecepie,

@@ -42,7 +42,7 @@ By design, this assessment contains more work than you will be able to complete 
 **Complete these setup tasks**
 
 - [ ] Run `npm install` twice inside both the `technical-assesment/Savory-Eat` and `technical-assesment/server` directory to install dependencies.
-- [ ] In your server directory create the database by running `mysql -u <username> -p <schema.sql`
+- [ ] In your server directory create the database by running `mysql -u <root> -p <schema.sql`
 - [ ] Start your application with two commands, `npm run react-dev` in your client directory and `npm run server-dev` in your server directory, in two separate terminal tabs.
 - [ ] Study the given codebase before beginning the steps below. Consider what's been provided to you, what you'll need to refactor, and what you'll need to create as you work through the steps below.
 

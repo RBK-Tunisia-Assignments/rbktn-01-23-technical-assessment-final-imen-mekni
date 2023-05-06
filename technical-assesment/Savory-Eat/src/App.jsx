@@ -2,7 +2,8 @@
 import React ,{useState}from "react";
 import "./App.css";
 import Home from "./components/Home.jsx";
-import AllRecepies from "./components/AllRecipies.jsx"
+import AllRecepies from "./components/AllRecepies.jsx"
+import data from "./data/data.json"
 function App() {
 const [view,setView]=useState('Home')
   let changeView = (view) => {
@@ -39,8 +40,8 @@ const [view,setView]=useState('Home')
         </div>
         <span className="nav-indicator"></span>
       </nav>
-      {view === "Home" && <Home changeView={changeView}/>}
-      {view === "Allrecepies" && <AllRecepies />}
+      {view === "Home" && <Home changeView={changeView}  />}
+      {view === "Allrecepies" && <AllRecepies  data ={data}    />}
      
       <div></div>
     </div>
